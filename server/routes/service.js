@@ -4,9 +4,13 @@ const Service = require("../models/Service");
 
 // Add service
 router.post("/add", async (req, res) => {
-  const service = new Service(req.body);
-  await service.save();
-  res.json({ message: "Service added" });
+  try {
+    const service = new Service(req.body);
+    await service.save();
+    res.json({ message: "Service added" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Get all services
