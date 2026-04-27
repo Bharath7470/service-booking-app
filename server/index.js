@@ -36,6 +36,8 @@ app.listen(5000, () => {
 
 const authRoutes = require("./routes/auth");
 const serviceRoutes = require("./routes/service");
+const bookingRoutes = require("./routes/booking");
 
+app.use("/api/bookings", bookingRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
